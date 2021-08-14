@@ -1,0 +1,208 @@
+create schema seriesdb;
+Query OK, 1 row affected (0.1686 sec)
+ MySQL  localhost:3306 ssl  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| seriesdb           |
+| sys                |
++--------------------+
+5 rows in set (0.0029 sec)
+ MySQL  localhost:3306 ssl  SQL > use seriesdb;
+Default schema set to Seriesdb.
+Fetching table and column names from seriesdb for auto-completion... Press ^C to stop.
+MySQL  localhost:3306 ssl  seriesdb  SQL > create table director (id  INT NOT NULL AUTO_INCREMENT, name VARCHAR(256) NOT NULL,PRIMARY KEY(id));
+Query OK, 0 rows affected (1.3574 sec)
+ MySQL  localhost:3306 ssl  seriesdb  SQL > create table country (id INT NOT NULL AUTO_INCREMENT, name VARCHAR(256) NOT NULL, PRIMARY KEY(id));
+Query OK, 0 rows affected (0.8865 sec)
+ MySQL  localhost:3306 ssl  seriesdb  SQL > create table genre (id INT NOT NULL AUTO_INCREMENT, name VARCHAR(256) NOT NULL,PRIMARY KEY(id));
+Query OK, 0 rows affected (0.7135 sec)
+ MySQL  localhost:3306 ssl  seriesdb  SQL > describe director;
++-------+--------------+------+-----+---------+----------------+
+| Field | Type         | Null | Key | Default | Extra          |
++-------+--------------+------+-----+---------+----------------+
+| id    | int          | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(256) | NO   |     | NULL    |                |
++-------+--------------+------+-----+---------+----------------+
+2 rows in set (0.0054 sec)
+ MySQL  localhost:3306 ssl  seriesdb  SQL > describe country;
++-------+--------------+------+-----+---------+----------------+
+| Field | Type         | Null | Key | Default | Extra          |
++-------+--------------+------+-----+---------+----------------+
+| id    | int          | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(256) | NO   |     | NULL    |                |
++-------+--------------+------+-----+---------+----------------+
+2 rows in set (0.2662 sec)
+ MySQL  localhost:3306 ssl  seriesdb  SQL > describe genre;
++-------+--------------+------+-----+---------+----------------+
+| Field | Type         | Null | Key | Default | Extra          |
++-------+--------------+------+-----+---------+----------------+
+| id    | int          | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(256) | NO   |     | NULL    |                |
++-------+--------------+------+-----+---------+----------------+
+2 rows in set (0.1988 sec)
+ MySQL  localhost:3306 ssl  seriesdb  SQL > create table series (id INT NOT NULL AUTO_INCREMENT, name VARCHAR(256), genre INT NOT NULL,director INT NOT NULL, country INT NOT NULL, yor DATE,yoe Date, language VARCHAR(256), seasons VARCHAR(256), status VARCHAR(256), PRIMARY KEY(id));
+Query OK, 0 rows affected (0.6769 sec)
+ MySQL  localhost:3306 ssl  seriesdb  SQL > describe series;
++-----------+--------------+------+-----+---------+----------------+
+| Field     | Type         | Null | Key | Default | Extra          |
++-----------+--------------+------+-----+---------+----------------+
+| id        | int          | NO   | PRI | NULL    | auto_increment |
+| name      | varchar(256) | YES  |     | NULL    |                |
+| genre     | int          | NO   |     | NULL    |                |
+| director  | int          | NO   |     | NULL    |                |
+| country   | int          | NO   |     | NULL    |                |
+| yor       | date         | YES  |     | NULL    |                |
+| yoe       | date         | YES  |     | NULL    |                |
+| language  | varchar(256) | YES  |     | NULL    |                |
+| seasons   | varchar(256) | YES  |     | NULL    |                |
+| status    | varchar(256) | YES  |     | NULL    |                |
++-----------+--------------+------+-----+---------+----------------+
+10 rows in set (0.1513 sec)
+ MySQL  localhost:3306 ssl  seriesdb  SQL > insert into director (name) values('Álex Pina');
+Query OK, 1 row affected (0.2135 sec)
+ MySQL  localhost:3306 ssl  seriesdb  SQL > insert into director (name) values('The Duffer Brothers');
+Query OK, 1 row affected (0.1111 sec)
+ MySQL  localhost:3306 ssl  seriesdb  SQL > insert into director(name) values('Tom Kapinos');
+Query OK, 1 row affected (0.1121 sec)
+ MySQL  localhost:3306 ssl  seriesdb  SQL > insert into director(name) values('Khomkrit Treewimol');
+Query OK, 1 row affected (0.1277 sec)
+ MySQL  localhost:3306 ssl  seriesdb  SQL > insert into director(name) values('Lee Eung-bok');
+Query OK, 1 row affected (0.2483 sec)
+ MySQL  localhost:3306 ssl  seriesdb  SQL > insert into director(name) values('Jim Mickle');
+Query OK, 1 row affected (0.1352 sec)
+ MySQL  localhost:3306 ssl  seriesdb  SQL > insert into director(name) values('Kabir Akhtar');
+Query OK, 1 row affected (0.1642 sec)
+ MySQL  localhost:3306 ssl  seriesdb  SQL > insert into director(name) values('Eric Heissere');
+Query OK, 1 row affected (0.1121 sec)
+ MySQL  localhost:3306 ssl  seriesdb  SQL > insert into director(name) values('James Burrows');
+Query OK, 1 row affected (0.1277 sec)
+ MySQL  localhost:3306 ssl  seriesdb  SQL > insert into director(name) values('Michael Uppendahl');
+Query OK, 1 row affected (0.2483 sec)
+ MySQL  localhost:3306 ssl  seriesdb  SQL > select *from director;
++----+---------------------+
+| id | name                |
++----+---------------------+
+|  1 | Álex Pina           |
+|  2 | The Duffer Brothers |
+|  3 | Tom Kapinos         |
+|  4 | Khomkrit Treewimol  |
+|  5 | Lee Eung-bok        |
+|  6 | Jim Mickle          |
+|  7 | Kabir Akhtar        |
+|  8 | Eric Heissere       |
+|  9 | James Burrows       |
+| 10 | Michael Uppendahl   |
++----+---------------------+
+10 rows in set (0.0015 sec)
+ MySQL  localhost:3306 ssl  seriesdb  SQL > insert into genre(name) values('Comedy');
+Query OK, 1 row affected (0.1695 sec)
+ MySQL  localhost:3306 ssl  seriesdb  SQL > insert into genre(name) values('Thriller');
+Query OK, 1 row affected (0.1580 sec)
+ MySQL  localhost:3306 ssl  seriesdb  SQL > insert into genre(name) values('Horror');
+Query OK, 1 row affected (0.1255 sec)
+ MySQL  localhost:3306 ssl  seriesdb  SQL > insert into genre(name) values('Drama');
+Query OK, 1 row affected (0.1254 sec)
+ MySQL  localhost:3306 ssl  seriesdb  SQL > insert into genre(name) values('Fantasy');
+Query OK, 1 row affected (0.1580 sec)
+ MySQL  localhost:3306 ssl  seriesdb  SQL > select*from genre;
++----+----------+
+| id | name     |
++----+----------+
+|  1 | Comedy   |
+|  2 | Thriller |
+|  3 | Horror   |
+|  4 | Drama    |
+|  5 | Fantasy  |
++----+----------+
+5 rows in set (0.0021 sec)
+ MySQL  localhost:3306 ssl  seriesdb  SQL > insert into country(name) values('India');
+Query OK, 1 row affected (0.1333 sec)
+ MySQL  localhost:3306 ssl  seriesdb  SQL > insert into country(name) values('USA');
+Query OK, 1 row affected (0.1246 sec)
+ MySQL  localhost:3306 ssl  seriesdb  SQL > insert into counry(name) values('Spain');
+ERROR: 1146 (42S02): Table 'seriesdb.counry' doesn't exist
+ MySQL  localhost:3306 ssl  seriesdb  SQL > insert into country(name) values('Spain');
+Query OK, 1 row affected (0.1297 sec)
+ MySQL  localhost:3306 ssl  seriesdb  SQL > select*from country;
++----+-------------+
+| id | name        |
++----+-------------+
+|  1 | South Korea |
+|  2 | USA         |
+|  3 | Spain       |
+|  4 | Thailand    |
++----+-------------+
+4 rows in set (0.0601 sec)
+MySQL  localhost:3306 ssl  seriesdb  SQL > insert into series(id,name,genre,director,country,yor,yoe,language,seasons,status) values(1,'Money Heist',2,1,3,'2017-05-02','2021-12-03','Spanish','ended','two');
+Query OK, 1 row affected (0.1513 sec)
+ MySQL  localhost:3306 ssl  seriesdb  SQL > insert into series(id,name,genre,director,country,yor,yoe,language,seasons,status) values(2,'Stranger things',3,2,2,'2016-07-15','','English','renewed','three');
+Query OK, 1 row affected (0.0740 sec)
+ MySQL  localhost:3306 ssl  seriesdb  SQL > insert into series(id,name,genre,director,country,yor,yoe,language,seasons,status) values(3,'Lucifer',5,3,2,'2016-01-25','','English','renewed','six');
+Query OK, 1 row affected (0.1738 sec)
+ MySQL  localhost:3306 ssl  seriesdb  SQL > insert into series(id,name,genre,director,country,yor,yoe,language,seasons,status) values(4,'Girl from nowhere',4,4,4,'2018-08-08','','Thai','renewed','two');
+Query OK, 1 row affected (0.0988 sec)
+ MySQL  localhost:3306 ssl  seriesdb  SQL > insert into series(id,name,genre,director,country,yor,yoe,language,seasons,status) values(5,'Sweet home',3,5,1,'2020-12-18','','Korean','renewed','one');
+Query OK, 1 row affected (0.1677 sec)
+ MySQL  localhost:3306 ssl  seriesdb  SQL > insert into series(id,name,genre,director,country,yor,yoe,language,seasons,status) values(6,'Sweet tooth-',4,6,2,'2021-06-04','','English','renewed','one');
+Query OK, 1 row affected (0.1407 sec)
+ MySQL  localhost:3306 ssl  seriesdb  SQL > insert into series(id,name,genre,director,country,yor,yoe,language,seasons,status) values(7,'Never Have I Ever',1,7,2,'2020-04-27','2021-07-15','English','ended','two');
+Query OK, 1 row affected (0.1009 sec)
+ MySQL  localhost:3306 ssl  seriesdb  SQL > insert into series(id,name,genre,director,country,yor,yoe,language,seasons,status) values(8,'Shadow and bone',5,8,2,'2021-04-23','','English','renewed','one');
+Query OK, 1 row affected (0.1738 sec)
+ MySQL  localhost:3306 ssl  seriesdb  SQL > insert into series(id,name,genre,director,country,yor,yoe,language,seasons,status) values(9,'Friends',1,9,2,'1994-09-22','2004-05-06','English','ended','ten');
+Query OK, 1 row affected (0.0988 sec)
+ MySQL  localhost:3306 ssl  seriesdb  SQL > insert into series(id,name,genre,director,country,yor,yoe,language,seasons,status) values(10,'Castle rock',3,10,2,'2018-07-25','2019-12-11','English','ended','two');
+Query OK, 1 row affected (0.1677 sec)
+MySQL  localhost:3306 ssl  seriesdb  SQL > select*from series;
++----+-------------------+-------+----------+---------+------------+------------+----------+---------+---------+
+| id | name              | genre | director | country | yor        | yoe        | language | status  | seasons |
++----+-------------- ----+-------+----------+---------+------------+------------+----------+---------+---------+
+|  1 | Money Heist       |     2 |        1 |       3 | 2017-05-02 | 2021-12-03 | Spanish  | ended   | two     |
+|  2 | Stranger things   |     3 |        2 |       2 | 2016-07-15 |            | English  | renewed | three   |
+|  3 | Lucifer           |     5 |        3 |       2 | 2016-01-25 |            | Spanish  | renewed | six     |
+|  4 | Girl from nowhere |     4 |        4 |       4 | 2018-08-08 |            | Thai     | renewed | two     |
+|  5 | Sweet home        |     3 |        5 |       1 | 2020-12-18 |            | Korean   | renewed | one     |
+|  6 | Sweet tooth       |     4 |        6 |       2 | 2021-06-04 |            | English  | renewed | one     |
+|  7 | Never Have I Ever |     1 |        7 |       2 | 2020-04-27 | 2020-05-15 | English  | ended   | two     |
+|  8 | Shadow and bone   |     5 |        8 |       2 | 2021-04-23 |            | English  | renewed | one     |
+|  9 | Friends           |     1 |        9 |       2 | 1994-09-22 | 2004-05-06 | English  | ended   | ten     |
+| 10 | Castle rock       |     3 |       10 |       2 | 2018-07-25 | 2019-12-11 | English  | ended   | two     |
++----+-------------------+-------+----------+---------+------------+------------+----------+---------+---------+
+10 rows in set (0.0019 sec)
+ MySQL  localhost:3306 ssl  seriesdb  SQL > select name, director,genre,country,status from series WHERE country=2 AND status='ended';
++-------------------+----------+-------+---------+--------+
+| name              | director | genre | country | status |
++-------------------+----------+-------+---------+--------+
+| Never Have I Ever |        7 |     1 |       2 | ended  |
+| Friends           |        9 |     1 |       2 | ended  |
+| Castle rock       |        10|     3 |       2 | ended  |
++-------------------+----------+-------+---------+--------+
+3 rows in set (0.0014 sec)
+MySQL  localhost:3306 ssl  seriesdb  SQL > select *from series WHERE yor BETWEEN '2010-12-31' AND '2021-06-04';
++----+-------------------+-------+----------+---------+------------+------------+----------+---------+---------+
+| id | name              | genre | director | country | yor        | yoe        | language | status  | seasons |
++----+-------------- ----+-------+----------+---------+------------+------------+----------+---------+---------+
+|  1 | Money Heist       |     2 |        1 |       3 | 2017-05-02 | 2021-12-03 | Spanish  | ended   | two     |
+|  2 | Stranger things   |     3 |        2 |       2 | 2016-07-15 |            | English  | renewed | three   |
+|  3 | Lucifer           |     5 |        3 |       2 | 2016-01-25 |            | Spanish  | renewed | six     |
+|  4 | Girl from nowhere |     4 |        4 |       4 | 2018-08-08 |            | Thai     | renewed | two     |
+|  5 | Sweet home        |     3 |        5 |       1 | 2020-12-18 |            | Korean   | renewed | one     |
+|  6 | Sweet tooth       |     4 |        6 |       2 | 2021-06-04 |            | English  | renewed | one     |
+|  7 | Never Have I Ever |     1 |        7 |       2 | 2020-04-27 | 2020-05-15 | English  | ended   | two     |
+|  8 | Shadow and bone   |     5 |        8 |       2 | 2021-04-23 |            | English  | renewed | one     |
+| 10 | Castle rock       |     3 |       10 |       2 | 2018-07-25 | 2019-12-11 | English  | ended   | two     |
++----+-------------------+-------+----------+---------+------------+------------+----------+---------+---------+
+9 rows in set (0.0013 sec)
+MySQL  localhost:3306 ssl  seriesdb  SQL > select *from series WHERE year_of_release BETWEEN '1994-09-22' AND '2010-12-31';
++----+---------+-------+----------+---------+------------+------------+----------+--------+---------+
+| id | name    | genre | director | country | yor        | yoe        | language | status | seasons |
++----+-- ------+-------+----------+---------+------------+------------+----------+--------+---------+
+|  9 | Friends |     1 |        9 |       2 | 1994-09-22 | 2004-05-06 | English  | ended  | ten     |
++----+---------+-------+----------+---------+------------+------------+----------+--------+---------+
+1 rows in set (0.0011 sec)
+
+
